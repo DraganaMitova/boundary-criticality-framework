@@ -307,13 +307,15 @@ $$
 
 For a Brownian or noisy process with drift, the continuous-time first-passage approximation is:
 
-$$ P(\tau_C \leq T)
-\Phi\left(\frac{\mu T - C_{\mathrm{eff}}}{\sigma\sqrt{T}}\right) + \exp\left(\frac{2\mu C_{\mathrm{eff}}}{\sigma^2}\right) \Phi\left(\frac{-\mu T - C_{\mathrm{eff}}}{\sigma\sqrt{T}}\right) $$
+$$
+P(\tau_C \leq T) = \Phi\left(\frac{\mu T - C_{\mathrm{eff}}}{\sigma\sqrt{T}}\right) + \exp\left(\frac{2\mu C_{\mathrm{eff}}}{\sigma^2}\right) \Phi\left(\frac{-\mu T - C_{\mathrm{eff}}}{\sigma\sqrt{T}}\right)
+$$
 
 For zero drift:
 
-$$ P(\tau_C \leq T)
-2\left[1 - \Phi\left(\frac{C_{\mathrm{eff}}}{\sigma\sqrt{T}}\right)\right] $$
+$$
+P(\tau_C \leq T) = 2\left[1 - \Phi\left(\frac{C_{\mathrm{eff}}}{\sigma\sqrt{T}}\right)\right]
+$$
 
 For discrete-time simulations of simple random walks, an effective-boundary correction overshoot is often required:
 
