@@ -103,10 +103,8 @@ $$
 
 where:
 
-| Symbol | Meaning |
-|---|---|
-| $\tau_B$ | first transition time through boundary $B$ |
-| $T$ | time horizon |
+- **$\tau_B$**: first transition time through boundary $B$
+- **$T$**: time horizon
 
 ---
 
@@ -128,17 +126,15 @@ $$
 
 ## 4. Meaning of the Terms
 
-| Term | Meaning |
-|---|---|
-| $\tau_B$ | First transition time through boundary $B$. |
-| $T$ | Time horizon. |
-| $q_{\Gamma_B}$ | Probability or availability of a transition channel. |
-| $p_{FP}$ | First-passage probability for noisy boundary escape. |
-| $p_k$ | Probability contribution from pressure mode $k$. |
-| $\phi_k$ | Measured pressure feature. |
-| $C_k$ | Capacity associated with pressure feature $k$. |
-| $\lambda_k$ | Sharpness of the transition around the threshold. |
-| $K$ | Set of selected pressure modes. |
+- **$\tau_B$**: First transition time through boundary $B$.
+- **$T$**: Time horizon.
+- **$q_{\Gamma_B}$**: Probability or availability of a transition channel.
+- **$p_{FP}$**: First-passage probability for noisy boundary escape.
+- **$p_k$**: Probability contribution from pressure mode $k$.
+- **$\phi_k$**: Measured pressure feature.
+- **$C_k$**: Capacity associated with pressure feature $k$.
+- **$\lambda_k$**: Sharpness of the transition around the threshold.
+- **$K$**: Set of selected pressure modes.
 
 If no transition channel exists, pressure may produce degradation, containment, fatigue, normalization, local damage, or rejection without system-level transition.
 
@@ -283,13 +279,11 @@ $$
 
 where:
 
-| Symbol | Meaning |
-|---|---|
-| $S_t$ | system state |
-| $\mu$ | drift toward or away from the boundary |
-| $\sigma$ | noise strength |
-| $\xi_t$ | random fluctuation |
-| $C$ | boundary capacity |
+- **$S_t$**: system state
+- **$\mu$**: drift toward or away from the boundary
+- **$\sigma$**: noise strength
+- **$\xi_t$**: random fluctuation
+- **$C$**: boundary capacity
 
 Transition occurs when:
 
@@ -416,14 +410,12 @@ It may strengthen, weaken, adapt, or collapse over time. In complex adaptive sys
 
 ### Examples of Capacity by Domain
 
-| Domain | Possible capacity definitions |
-|---|---|
-| Physical systems | yield strength, fracture toughness, energy barrier, load limit, thermal threshold |
-| Stochastic systems | distance to absorbing boundary, escape barrier, noise-adjusted threshold |
-| Control systems | safety margin, viability margin, stability reserve, constraint boundary |
-| Neural and decision systems | decision threshold, activation threshold, attractor basin boundary, commitment boundary |
-| Software governance systems | authorization boundary, policy threshold, constraint set, approval condition, execution gate |
-| Social and institutional systems | resilience capacity, legitimacy reserve, enforcement capacity, adaptive reform capacity, trust reserve |
+- **Physical systems**: yield strength, fracture toughness, energy barrier, load limit, thermal threshold
+- **Stochastic systems**: distance to absorbing boundary, escape barrier, noise-adjusted threshold
+- **Control systems**: safety margin, viability margin, stability reserve, constraint boundary
+- **Neural and decision systems**: decision threshold, activation threshold, attractor basin boundary, commitment boundary
+- **Software governance systems**: authorization boundary, policy threshold, constraint set, approval condition, execution gate
+- **Social and institutional systems**: resilience capacity, legitimacy reserve, enforcement capacity, adaptive reform capacity, trust reserve
 
 The important requirement is:
 
@@ -542,14 +534,12 @@ That overlap is expected.
 
 In some domains, boundary-criticality may reduce to known models.
 
-| Existing theory | Relationship |
-|---|---|
-| First-passage theory | When the system is a stochastic process crossing a boundary, the framework becomes first-passage analysis. |
-| Catastrophe and bifurcation theory | When the system shifts between attractor regimes, the framework overlaps with catastrophe theory and bifurcation theory. |
-| Self-organized criticality | When the system accumulates instability and releases through avalanches, the framework overlaps with self-organized criticality. |
-| Control and viability theory | When the system is governed by admissible regions and safety constraints, the framework overlaps with control theory, viability theory, and safety-boundary analysis. |
-| Barrier-crossing models | When the system escapes over an energy or potential barrier, the framework overlaps with barrier-crossing and escape-rate models. |
-| Drift-diffusion and evidence accumulation | When the system accumulates evidence toward a decision threshold, the framework overlaps with drift-diffusion models and evidence accumulation. |
+- **First-passage theory**: When the system is a stochastic process crossing a boundary, the framework becomes first-passage analysis.
+- **Catastrophe and bifurcation theory**: When the system shifts between attractor regimes, the framework overlaps with catastrophe theory and bifurcation theory.
+- **Self-organized criticality**: When the system accumulates instability and releases through avalanches, the framework overlaps with self-organized criticality.
+- **Control and viability theory**: When the system is governed by admissible regions and safety constraints, the framework overlaps with control theory, viability theory, and safety-boundary analysis.
+- **Barrier-crossing models**: When the system escapes over an energy or potential barrier, the framework overlaps with barrier-crossing and escape-rate models.
+- **Drift-diffusion and evidence accumulation**: When the system accumulates evidence toward a decision threshold, the framework overlaps with drift-diffusion models and evidence accumulation.
 
 Therefore, the novelty claim should be modest.
 
@@ -583,18 +573,16 @@ It becomes predictive only when its terms are fixed before observation.
 
 A valid application must define the following before evaluating whether a transition occurs:
 
-| Required object | Meaning |
-|---|---|
-| $B$ | boundary |
-| $\Omega_B$ | admissible or stable region |
-| $D_B$ | deviation from the admissible region |
-| $\phi_k$ | selected pressure modes |
-| $C_k$ | capacity for each pressure mode |
-| $\lambda_k$ | threshold sharpness for each mode |
-| $q_{\Gamma_B}$ | transition-channel availability |
-| $p_{FP}$ | first-passage probability, when noise is relevant |
-| $T$ | time horizon |
-| transition criterion | definition of what counts as a transition |
+- **$B$**: boundary
+- **$\Omega_B$**: admissible or stable region
+- **$D_B$**: deviation from the admissible region
+- **$\phi_k$**: selected pressure modes
+- **$C_k$**: capacity for each pressure mode
+- **$\lambda_k$**: threshold sharpness for each mode
+- **$q_{\Gamma_B}$**: transition-channel availability
+- **$p_{FP}$**: first-passage probability, when noise is relevant
+- **$T$**: time horizon
+- **transition criterion**: definition of what counts as a transition
 
 The framework makes several testable predictions.
 
@@ -709,49 +697,41 @@ If the model does not outperform simpler existing models, treat the framework as
 
 ### Sandpile or Avalanche Systems
 
-| Component | Interpretation |
-|---|---|
-| Boundary | slope stability |
-| Deviation | local instability |
-| Pressure | accumulated grains, local overload, topology of unstable regions |
-| Transition | avalanche |
-| Related theory | self-organized criticality |
+- **Boundary**: slope stability
+- **Deviation**: local instability
+- **Pressure**: accumulated grains, local overload, topology of unstable regions
+- **Transition**: avalanche
+- **Related theory**: self-organized criticality
 
 ---
 
 ### Neural Decision Systems
 
-| Component | Interpretation |
-|---|---|
-| Boundary | decision threshold |
-| Deviation | evidence displacement toward a choice |
-| Pressure | evidence accumulation, drift, noise, urgency |
-| Transition | commitment to decision |
-| Related theory | drift-diffusion models |
+- **Boundary**: decision threshold
+- **Deviation**: evidence displacement toward a choice
+- **Pressure**: evidence accumulation, drift, noise, urgency
+- **Transition**: commitment to decision
+- **Related theory**: drift-diffusion models
 
 ---
 
 ### Software Governance Systems
 
-| Component | Interpretation |
-|---|---|
-| Boundary | authorization and policy constraints |
-| Deviation | request outside permitted authority |
-| Pressure | constraint violation, repeated attempts, suspicious arguments, escalation demand |
-| Transition | approve, reject, quarantine, execute, rollback |
-| Related theory | control systems, safety constraints, formal policy enforcement |
+- **Boundary**: authorization and policy constraints
+- **Deviation**: request outside permitted authority
+- **Pressure**: constraint violation, repeated attempts, suspicious arguments, escalation demand
+- **Transition**: approve, reject, quarantine, execute, rollback
+- **Related theory**: control systems, safety constraints, formal policy enforcement
 
 ---
 
 ### Social and Institutional Systems
 
-| Component | Interpretation |
-|---|---|
-| Boundary | institutional legitimacy and operational stability |
-| Deviation | unresolved tension, loss of trust, unmet demands |
-| Pressure | accumulated tension, rapid shocks, network contagion, legitimacy decay |
-| Transition | reform, collapse, adaptation, revolt, fragmentation |
-| Related theory | complex systems, critical transitions, network contagion |
+- **Boundary**: institutional legitimacy and operational stability
+- **Deviation**: unresolved tension, loss of trust, unmet demands
+- **Pressure**: accumulated tension, rapid shocks, network contagion, legitimacy decay
+- **Transition**: reform, collapse, adaptation, revolt, fragmentation
+- **Related theory**: complex systems, critical transitions, network contagion
 
 ---
 
