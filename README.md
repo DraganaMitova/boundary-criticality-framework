@@ -222,7 +222,7 @@ Examples:
 ### 5.4 Volatility
 
 $$
-\phi_V = \operatorname{Var}(D_B(t))
+\phi_V = \mathrm{Var}(D_B(t))
 $$
 
 This applies when instability, fluctuation, or variance predicts transition risk.
