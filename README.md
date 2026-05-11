@@ -114,13 +114,15 @@ The proposed general risk form is:
 
 $$ P(\tau_B \leq T) = q_{\Gamma_B} \max \left( p_{FP}, \max_{k \in K}(p_k) \right) $$
 
-*(Note: The `max` function avoids artificially inflating risk when pressure modes are highly correlated. If modes are strictly mathematically independent, the aggregation $1 - (1-p_{FP})\prod(1-p_k)$ may be used.)*
+*(Note: This aggregation is a heuristic bound, not a derived first-principles risk measure. The `max` function treats different pressure modes as competing, mutually exclusive risks to avoid artificially inflating probability when modes are highly correlated. A true first-principles derivation would require a formal coupled competing-risks model or copula aggregation.)*
 
-where each pressure-mode probability is modeled using a bounded function to ensure $p_k = 0$ when $\phi_k = 0$:
+where each pressure-mode probability is modeled using a bounded continuous function to ensure $p_k = 0$ when $\phi_k = 0$:
 
 $$
 p_k = 1 - \exp\left( - \left( \frac{\phi_k}{C_k} \right)^{\lambda_k} \right)
 $$
+
+*(Caveat: This exponential/Weibull form is mathematically plausible but arbitrary. It biases the model toward smooth thresholds. In many physical or complex systems, near-critical behavior follows power laws rather than exponentials. The mapping function should be adjusted based on domain-specific criticality mechanics.)*
 
 ---
 
@@ -313,17 +315,13 @@ For zero drift:
 $$ P(\tau_C \leq T)
 2\left[1 - \Phi\left(\frac{C_{\mathrm{eff}}}{\sigma\sqrt{T}}\right)\right] $$
 
-For discrete-time simulations, an effective-boundary correction may be required:
+For discrete-time simulations of simple random walks, an effective-boundary correction overshoot is often required:
 
 $$
-C_{\mathrm{eff}} \approx C + \frac{1}{2}\sigma
+C_{\mathrm{eff}} \approx C + 0.5\sigma
 $$
 
-This correction is not claimed as universal.
-
-It is a practical correction for a simple discrete-time test setup.
-
-Different systems may require different calibration.
+**Important Caveat:** This correction is highly specific to discrete-time Gaussian steps. It fails for continuous-time processes, drift-heavy regimes, correlated noise (colored noise), or fat-tailed jump processes (Lévy flights). It is included here strictly as a practical discrete-simulation placeholder, not a universal boundary shift.
 
 ---
 
@@ -404,7 +402,13 @@ $$
 
 is the effective containment capacity of boundary $B$ at time $t$.
 
-It may strengthen, weaken, adapt, or collapse over time. In complex adaptive systems, capacity often co-evolves with historical pressure (e.g., biological hypertrophy or institutional emergency powers), meaning $C_B(t) = f(\phi_{0:t-1})$.
+It may strengthen, weaken, adapt, or collapse over time. In complex adaptive systems, capacity often co-evolves with historical pressure (e.g., biological hypertrophy, material self-healing, or institutional learning). 
+
+Without formalizing this dynamical feedback, the model is incomplete and risks post-hoc rationalization. If capacity adapts faster than pressure accumulates ($\frac{dC_k}{dt} > \frac{d\phi_k}{dt}$), the system will *not* transition despite high absolute pressure. A complete dynamical systems formulation must couple pressure to capacity:
+
+$$
+\frac{dC_B(t)}{dt} = f(\phi_{0:t-1}, C_{0:t-1}) - \text{decay}
+$$
 
 ---
 
@@ -750,9 +754,7 @@ It should be considered weakened or false in a domain if:
 
 The framework should not be protected by redefining terms after the outcome is known.
 
-That would make it unfalsifiable.
-
-A valid test must define the model before evaluating the transition.
+That would make it unfalsifiable. The most dangerous practical tautology is the transition channel $\Gamma_B$. In social or software systems, an "available channel" often only becomes visible *after* a transition has exploited it. A strong, valid test requires predicting and independently observing $\Gamma_B$ **before** the transition occurs.
 
 ---
 
