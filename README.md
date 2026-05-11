@@ -119,7 +119,7 @@ $$ P(\tau_B \leq T) = q_{\Gamma_B} \max \left( p_{FP}, \max_{k \in K}(p_k) \righ
 where each pressure-mode probability is modeled using a bounded continuous function to ensure $p_k = 0$ when $\phi_k = 0$:
 
 $$
-p_k = 1 - \exp\left( - \left( \frac{\phi_k}{C_k} \right)^{\lambda_k} \right)
+p_k = 1 - \exp\left(- (\phi_k / C_k)^{\lambda_k}\right)
 $$
 
 *(Caveat: This exponential/Weibull form is mathematically plausible but arbitrary. It biases the model toward smooth thresholds. In many physical or complex systems, near-critical behavior follows power laws rather than exponentials. The mapping function should be adjusted based on domain-specific criticality mechanics.)*
@@ -308,13 +308,13 @@ $$
 For a Brownian or noisy process with drift, the continuous-time first-passage approximation is:
 
 $$
-P(\tau_C \leq T) = \Phi\left(\frac{\mu T - C_{\mathrm{eff}}}{\sigma\sqrt{T}}\right) + \exp\left(\frac{2\mu C_{\mathrm{eff}}}{\sigma^2}\right) \Phi\left(\frac{-\mu T - C_{\mathrm{eff}}}{\sigma\sqrt{T}}\right)
+P(\tau_C \leq T) = \Phi\left( (\mu T - C_{\mathrm{eff}}) / (\sigma\sqrt{T}) \right) + \exp\left( 2\mu C_{\mathrm{eff}} / \sigma^2 \right) \Phi\left( (-\mu T - C_{\mathrm{eff}}) / (\sigma\sqrt{T}) \right)
 $$
 
 For zero drift:
 
 $$
-P(\tau_C \leq T) = 2\left[1 - \Phi\left(\frac{C_{\mathrm{eff}}}{\sigma\sqrt{T}}\right)\right]
+P(\tau_C \leq T) = 2\left[ 1 - \Phi\left( C_{\mathrm{eff}} / (\sigma\sqrt{T}) \right) \right]
 $$
 
 For discrete-time simulations of simple random walks, an effective-boundary correction overshoot is often required:
