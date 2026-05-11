@@ -114,14 +114,8 @@ where:
 
 The proposed general risk form is:
 
-$$
-P(\tau_B \leq T)
-=
-q_{\Gamma_B}
-\left[
-1 - (1 - p_{FP}) \prod_{k \in K}(1 - p_k)
-\right]
-$$
+$$ P(\tau_B \leq T)
+q_{\Gamma_B} \left[ 1 - (1 - p_{FP}) \prod_{k \in K}(1 - p_k) \right] $$
 
 where each pressure-mode probability is:
 
