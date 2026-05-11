@@ -114,19 +114,14 @@ where:
 
 The proposed general risk form is:
 
-$$ P(\tau_B \leq T)
-q_{\Gamma_B} \left[ 1 - (1 - p_{FP}) \prod_{k \in K}(1 - p_k) \right] $$
+$$ P(\tau_B \leq T) = q_{\Gamma_B} \max \left( p_{FP}, \max_{k \in K}(p_k) \right) $$
 
-where each pressure-mode probability is:
+*(Note: The `max` function avoids artificially inflating risk when pressure modes are highly correlated. If modes are strictly mathematically independent, the aggregation $1 - (1-p_{FP})\prod(1-p_k)$ may be used.)*
 
-$$
-p_k = \sigma\left(\lambda_k\left(\frac{\phi_k}{C_k} - 1\right)\right)
-$$
-
-and:
+where each pressure-mode probability is modeled using a bounded function to ensure $p_k = 0$ when $\phi_k = 0$:
 
 $$
-\sigma(x) = \frac{1}{1 + e^{-x}}
+p_k = 1 - \exp\left( - \left( \frac{\phi_k}{C_k} \right)^{\lambda_k} \right)
 $$
 
 ---
@@ -162,8 +157,10 @@ A practical pressure set may include the following modes.
 ### 5.1 Accumulated Deviation
 
 $$
-\phi_A = \int_0^T \max(0, D_B(t))\,dt
+\phi_A = \int_0^T \max(0, D_B(t)) e^{-\gamma(T-t)}\,dt
 $$
+
+*(where $\gamma$ is the system's natural recovery or dissipation rate, preventing infinite buildup from negligible deviations over long periods)*
 
 This applies when transition depends on buildup over time.
 
@@ -381,6 +378,8 @@ It may produce:
 - local damage
 - hidden instability
 
+**Critical requirement:** The existence of a transition channel $\Gamma_B$ must be observable ex-ante, independently of whether a transition occurs. Otherwise, the model becomes an unfalsifiable tautology where all failed transitions are simply retroactively blamed on "no channel."
+
 This prevents the hypothesis from falsely claiming that high pressure always causes transition.
 
 The practical rule is:
@@ -411,7 +410,7 @@ $$
 
 is the effective containment capacity of boundary $B$ at time $t$.
 
-It may strengthen, weaken, adapt, or collapse over time.
+It may strengthen, weaken, adapt, or collapse over time. In complex adaptive systems, capacity often co-evolves with historical pressure (e.g., biological hypertrophy or institutional emergency powers), meaning $C_B(t) = f(\phi_{0:t-1})$.
 
 ---
 
