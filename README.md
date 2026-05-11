@@ -114,7 +114,7 @@ The proposed general risk form is:
 
 $$ P(\tau_B \leq T) = q_{\Gamma_B} \max \left( p_{FP}, \max_{k \in K}(p_k) \right) $$
 
-*(Note: This aggregation is a heuristic bound, not a derived first-principles risk measure. The `max` function treats different pressure modes as competing, mutually exclusive risks to avoid artificially inflating probability when modes are highly correlated. A true first-principles derivation would require a formal coupled competing-risks model or copula aggregation.)*
+*(Note: This `max` aggregation acts as a conservative heuristic bound (or worst-case mode), not a true probabilistic risk measure. While it avoids artificial inflation of highly correlated modes and is clamped to $[0,1]$ in code, it fundamentally lacks a formal copula to properly handle the joint probability of interacting modes (e.g., peak and accumulation interacting non-linearly). A true derivation requires a formal coupled competing-risks model.)*
 
 where each pressure-mode probability is modeled using a bounded continuous function to ensure $p_k = 0$ when $\phi_k = 0$:
 
@@ -571,11 +571,11 @@ $$
 
 ---
 
-## 12. Predictive Status
+## 12. Predictive Status and Calibration
 
-At its current stage, the framework is strongest as a unifying and testable modeling structure.
+At its current stage, the framework is strongest as a unifying and testable modeling structure. It is essentially a functional form with free parameters.
 
-It becomes predictive only when its terms are fixed before observation.
+It becomes predictive only when its terms are fixed before observation. Crucially, the parameters $C_k$ (capacity) and $\lambda_k$ (threshold sharpness) cannot be set arbitrarily. For a real system, they must be rigorously estimated from historical data using formal fitting methods (e.g., Maximum Likelihood Estimation, Bayesian updating, or grid search). Without empirical calibration, the framework is a descriptive thought experiment, not a predictive model.
 
 A valid application must define the following before evaluating whether a transition occurs:
 
@@ -756,7 +756,9 @@ It should be considered weakened or false in a domain if:
 
 The framework should not be protected by redefining terms after the outcome is known.
 
-That would make it unfalsifiable. The most dangerous practical tautology is the transition channel $\Gamma_B$. In social or software systems, an "available channel" often only becomes visible *after* a transition has exploited it. A strong, valid test requires predicting and independently observing $\Gamma_B$ **before** the transition occurs.
+That would make it unfalsifiable. The most dangerous practical tautology is the transition channel $\Gamma_B$. In social or software systems, an "available channel" often only becomes visible *after* a transition has exploited it. A strong, valid test requires predicting and independently observing $\Gamma_B$ **before** the transition occurs. 
+
+Because of this measurement problem, the framework is vastly stronger and more falsifiable in domains where channels are physical or explicitly designed (e.g., fuses, circuit breakers, formal decision thresholds) than in domains where channels are emergent.
 
 ---
 
@@ -777,6 +779,18 @@ Its weakest point is:
 Its best use is:
 
 > A formal checklist for turning vague transition language into testable models.
+
+---
+
+## 17. Practical Usability Assessment
+
+Should someone use this framework in practice?
+
+- **Graduate seminar on cross-domain risk models**: **Yes** – Excellent teaching case (includes strengths, caveats, and a mathematically formalized flaw regarding uncoupled capacity dynamics).
+- **As a critique of accumulation-only models**: **Yes** – The logic convincingly demonstrates why strictly accumulation-based models fail under shock or high-noise regimes.
+- **Engineering risk assessment for a physical system**: **Possibly** – Useful only after rigorously calibrating $\lambda_k$ and $C_k$ to historical system data.
+- **Early warning for social or institutional transitions**: **No** – Channel availability and dynamic capacity adaptation are too difficult to measure ex-ante in emergent systems, risking post-hoc tautology.
+- **As a production-ready software library**: **No** – It remains a mathematical hypothesis and functional form with demonstration code, not a validated package.
 
 ---
 
